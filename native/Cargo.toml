@@ -1,0 +1,28 @@
+[package]
+name = "dayweave-android"
+description = "Exposes Dayweave's shared core to the Android app through JNI"
+version = "0.1.0"
+edition = "2021"
+license = "MIT"
+publish = false
+
+[lib]
+name = "dayweave"
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+# The desktop repository, pinned as the `core` submodule, so both apps run the same tested logic.
+dayweave-core = { path = "../core/crates/dayweave-core" }
+jni = { version = "0.21", default-features = false }
+serde_json = "1"
+
+[dev-dependencies]
+tempfile = "3"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+strip = true
+# Panics are caught at the JNI boundary rather than aborting the app.
+panic = "unwind"
