@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Dayweave</string>
+    <string name="shortcut_new_task_short">New task</string>
+    <string name="shortcut_new_task_long">Add a new task</string>
+</resources>
