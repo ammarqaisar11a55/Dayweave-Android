@@ -6,7 +6,9 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.runtime.mutableStateOf
+import kotlin.concurrent.thread
 import io.github.ammarqaisar11a55.dayweave.notify.Notifications
+import io.github.ammarqaisar11a55.dayweave.notify.SyncWork
 import io.github.ammarqaisar11a55.dayweave.ui.App
 import io.github.ammarqaisar11a55.dayweave.ui.Destination
 
@@ -19,6 +21,13 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         pending.value = destinationOf(intent)
         setContent { App(pending.value) { pending.value = null } }
+    }
+
+    /** Every time Dayweave comes to the front, it fetches other devices' changes if it can. */
+    override fun onStart() {
+        super.onStart()
+        val context = applicationContext
+        thread(name = "dayweave-sync-on-open") { SyncWork.requestSoon(context, delaySeconds = 0) }
     }
 
     override fun onNewIntent(intent: Intent) {

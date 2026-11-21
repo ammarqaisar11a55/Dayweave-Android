@@ -19,11 +19,8 @@ class DayweaveApp : Application() {
         Scheduler.ensurePeriodic(this)
         SyncWork.ensurePeriodic(this)
         addShortcuts()
-        thread(name = "dayweave-start") {
-            Scheduler.runTick(this)
-            // Fetch other devices' changes as soon as the app opens, if there's a connection.
-            SyncWork.requestSoon(this, delaySeconds = 0)
-        }
+        // Syncing on open is MainActivity's job, so a reminder waking the app doesn't sync needlessly.
+        thread(name = "dayweave-start") { Scheduler.runTick(this) }
     }
 
     /** Long-pressing the launcher icon offers "New task". Added in code so debug builds point at themselves. */
