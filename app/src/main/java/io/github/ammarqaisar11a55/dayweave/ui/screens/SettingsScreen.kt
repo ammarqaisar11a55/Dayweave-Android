@@ -200,10 +200,12 @@ fun SettingsScreen() {
             NumberRow("Sessions before a long break", settings.sessionsBeforeLongBreak, 1, 12, 1, null) { set("sessionsBeforeLongBreak", it) }
         }
 
+        SyncSection()
+
         SectionHeader("Backup")
         GroupedList {
             Text(
-                "Everything stays on this phone. Save a backup to keep a copy elsewhere, or to move your data to Dayweave on another phone or your Ubuntu desktop.",
+                "Save a backup to keep a copy of everything on this phone elsewhere. To keep devices in step all the time, use sync instead.",
                 style = MaterialTheme.typography.bodyMedium, color = Dw.colors.ink2,
                 modifier = Modifier.padding(16.dp),
             )
@@ -230,7 +232,7 @@ fun SettingsScreen() {
                 info?.let { Text("Core ${it.version}, data format ${it.schemaVersion}", style = MaterialTheme.typography.labelSmall.merge(Tabular), color = Dw.colors.ink2) }
                 Spacer(Modifier.height(4.dp))
                 Text(
-                    "No account, no tracking and no ads. Your tasks and habits never leave this phone unless you save a backup. The only network use is checking GitHub for updates.",
+                    "No account needed, no tracking and no ads. Your tasks and habits stay on this phone unless you turn on sync or save a backup. Otherwise, the only network use is checking GitHub for updates.",
                     style = MaterialTheme.typography.bodyMedium, color = Dw.colors.ink2,
                 )
             }
