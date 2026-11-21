@@ -48,6 +48,7 @@ import io.github.ammarqaisar11a55.dayweave.core.Settings
 import io.github.ammarqaisar11a55.dayweave.core.TaskInput
 import io.github.ammarqaisar11a55.dayweave.ui.components.Actions
 import io.github.ammarqaisar11a55.dayweave.ui.components.LocalActions
+import io.github.ammarqaisar11a55.dayweave.ui.components.SyncAction
 import io.github.ammarqaisar11a55.dayweave.ui.components.rememberRpc
 import io.github.ammarqaisar11a55.dayweave.ui.screens.AnalyticsScreen
 import io.github.ammarqaisar11a55.dayweave.ui.screens.CalendarScreen
@@ -137,7 +138,12 @@ fun App(pending: Destination?, onHandled: () -> Unit) {
                                 }
                             }
                         },
-                        actions = { if (isTab) MoreMenu(navigation) },
+                        actions = {
+                            if (isTab) {
+                                SyncAction()
+                                MoreMenu(navigation)
+                            }
+                        },
                         colors = TopAppBarDefaults.topAppBarColors(containerColor = Dw.colors.window),
                     )
                 },
