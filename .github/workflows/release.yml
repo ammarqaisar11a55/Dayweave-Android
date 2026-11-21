@@ -21,8 +21,6 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-      - name: Apply core patches
-        run: sh scripts/apply-core-patches.sh
       - name: Check the tag matches the version
         run: |
           version=$(sed -n 's/^dayweave.version=//p' gradle.properties)

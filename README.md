@@ -85,10 +85,6 @@ git clone --recurse-submodules https://github.com/ammarqaisar11a55/Dayweave-Andr
 ```
 
 ```bash
-sh scripts/apply-core-patches.sh
-```
-
-```bash
 rustup target add aarch64-linux-android x86_64-linux-android
 ```
 

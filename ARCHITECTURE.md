@@ -61,13 +61,6 @@ lost. Keep a copy somewhere safe outside GitHub.
 For a local release build, put the same four values in an untracked `keystore.properties`
 (`storeFile`, `storePassword`, `keyAlias`, `keyPassword`).
 
-## Core patches
-
-`core-patches/` holds core changes the app needs before they're published in the Dayweave repository.
-`scripts/apply-core-patches.sh` applies them to the submodule, skipping any already applied, and every
-workflow runs it after checkout. Once a patch's change is in a published Dayweave commit, move the
-submodule to that commit and delete the patch.
-
 ## Updating the core
 
 ```bash
