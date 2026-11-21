@@ -322,6 +322,20 @@ data class Notice(
 
 @Serializable data class NextWake(val at: String? = null)
 
+/** Whether this phone syncs with a Dayweave server. Everything works without it. */
+@Serializable
+data class SyncStatus(
+    val signedIn: Boolean = false,
+    val server: String? = null,
+    val email: String? = null,
+    val lastSyncAt: String? = null,
+    val lastError: String? = null,
+    /** Changes on this phone not yet sent. */
+    val pending: Int = 0,
+)
+
+@Serializable data class SyncReport(val sent: Int = 0, val received: Int = 0)
+
 @Serializable
 data class BackupCounts(val tasks: Int = 0, val habits: Int = 0, val habitEntries: Int = 0, val projects: Int = 0, val focusSessions: Int = 0)
 

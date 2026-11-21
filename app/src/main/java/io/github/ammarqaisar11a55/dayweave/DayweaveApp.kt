@@ -8,6 +8,7 @@ import android.graphics.drawable.Icon
 import io.github.ammarqaisar11a55.dayweave.core.Dayweave
 import io.github.ammarqaisar11a55.dayweave.notify.Notifications
 import io.github.ammarqaisar11a55.dayweave.notify.Scheduler
+import io.github.ammarqaisar11a55.dayweave.notify.SyncWork
 import kotlin.concurrent.thread
 
 class DayweaveApp : Application() {
@@ -16,8 +17,13 @@ class DayweaveApp : Application() {
         Dayweave.init(this)
         Notifications.createChannels(this)
         Scheduler.ensurePeriodic(this)
+        SyncWork.ensurePeriodic(this)
         addShortcuts()
-        thread(name = "dayweave-start") { Scheduler.runTick(this) }
+        thread(name = "dayweave-start") {
+            Scheduler.runTick(this)
+            // Fetch other devices' changes as soon as the app opens, if there's a connection.
+            SyncWork.requestSoon(this, delaySeconds = 0)
+        }
     }
 
     /** Long-pressing the launcher icon offers "New task". Added in code so debug builds point at themselves. */

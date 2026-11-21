@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import io.github.ammarqaisar11a55.dayweave.notify.FocusNotification
 import io.github.ammarqaisar11a55.dayweave.notify.Scheduler
+import io.github.ammarqaisar11a55.dayweave.notify.SyncWork
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -86,6 +87,8 @@ object Dayweave {
         withContext(Dispatchers.IO) {
             Scheduler.reschedule(context)
             if (method.startsWith("focus.")) FocusNotification.sync(context)
+            // Signing in syncs straight away, and every other change is sent a few seconds later.
+            if (method.startsWith("sync.")) SyncWork.ensurePeriodic(context) else SyncWork.requestSoon(context)
         }
         return result
     }
