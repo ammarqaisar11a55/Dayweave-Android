@@ -12,7 +12,9 @@ crate-type = ["cdylib", "rlib"]
 
 [dependencies]
 # The desktop repository, pinned as the `core` submodule, so both apps run the same tested logic.
-dayweave-core = { path = "../core/crates/dayweave-core" }
+# The `http` feature brings the sync client, with rustls and built-in root certificates, so it works the same as on
+# Ubuntu without relying on Android's certificate store.
+dayweave-core = { path = "../core/crates/dayweave-core", features = ["http"] }
 jni = { version = "0.21", default-features = false }
 serde_json = "1"
 
