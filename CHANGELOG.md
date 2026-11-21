@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.2.1
+
+### Added
+
+- A sync icon in the top bar once you're signed in, showing changes waiting and whether the last
+  sync finished
+- Dayweave syncs whenever it comes to the front, not only when it starts
+
 ## 0.2.0
 
 ### Added
