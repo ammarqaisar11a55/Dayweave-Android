@@ -34,6 +34,9 @@ desktop interface uses the same methods, so a method tested there behaves the sa
   it next has work (`scheduler.nextWake`) and an exact alarm wakes the app then. A WorkManager job every
   15 minutes is the safety net, and boot, time, time zone and permission changes set the alarm again.
   Each wake runs the core's scheduler, which decides what is due and never repeats a reminder.
+- `notify/SyncWork.kt` runs sync as WorkManager jobs that wait for a network connection: a few
+  seconds after each change, when the app opens, and every 15 minutes or so. The sync itself, with
+  its outbox and newest-change-wins merging, is in the shared core, the same code as on the desktop.
 - `update/` checks `releases/latest/download/latest.json` in this repository, downloads the APK it
   names, checks its SHA-256 and signing certificate, and hands it to Android's `PackageInstaller`.
 

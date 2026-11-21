@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased
+
+### Added
+
+- Optional sync with Dayweave for Ubuntu and other phones, in Settings → Sync. Everything keeps
+  working offline, and changes sync when the phone is back online. The later change to the same item
+  wins
+- Create a sync account, sign in, sign out, and delete the account from the server
+
 ## 0.1.0
 
 The first Android version, built on the same core as Dayweave 0.1.0 for Ubuntu.

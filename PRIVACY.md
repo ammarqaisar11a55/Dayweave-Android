@@ -1,12 +1,30 @@
 # Privacy
 
-Dayweave keeps everything on your phone.
+Dayweave keeps everything on your phone unless you turn on sync.
 
-- **No account.** There is nothing to sign up for.
-- **No cloud.** Nothing is synchronised or uploaded, and Android's cloud backup is turned off for the app.
+- **No account needed.** Dayweave works fully without one.
+- **No cloud unless you choose it.** Without sync nothing is uploaded, and Android's cloud backup is
+  turned off for the app.
 - **No telemetry, advertising or third-party services.** The Inter typeface ships inside the app.
 
-## The one network request
+## Sync
+
+Sync is off until you sign in under Settings → Sync. Dayweave's own server is
+`dayweave-server.vercel.app`, run by Dayweave's developer on Vercel, with data in a Supabase Postgres
+database in Tokyo. You can enter the address of a server you run instead
+([Dayweave-Server](https://github.com/ammarqaisar11a55/Dayweave-Server)). Then:
+
+- Dayweave talks only to that server, over HTTPS, and only to sign in, sync and sign out.
+- Your tasks, habits, check-ins, projects, finished focus sessions and preferences are sent to the
+  server and stored there, so your other devices can fetch them.
+- The server stores your email and a hash of your password. The phone keeps a token for itself
+  instead of your password. Backups never contain it.
+- Signing out stops syncing and revokes this phone's token. **Delete account** removes everything
+  stored on the server. Data on the phone stays either way.
+
+Whoever runs the server can read what it stores. Use a server you trust, or run your own.
+
+## Update checks
 
 Once a day, and when you press **Check now** in Settings, Dayweave downloads a small file called
 `latest.json` from this repository's latest GitHub release. If it names a newer version, Dayweave asks
@@ -37,7 +55,7 @@ to you.
 | Notifications | To show reminders and the focus timer |
 | Alarms and reminders | To deliver reminders on the minute instead of a few minutes late |
 | Run at startup | To set reminders again after the phone restarts |
-| Internet | Only for the update check above |
+| Internet | For the update check above, and for sync once you sign in |
 | Install apps | Only to install an update you've agreed to |
 
 ## Notifications

@@ -41,6 +41,9 @@ small piece of weave, and each thread fills with colour as you finish it.
   rescheduled after a restart or a change of time zone.
 - **Backups.** Save a full backup, a database copy or CSV exports anywhere through Android's file
   picker, and restore after seeing exactly what the file holds.
+- **Sync, when you want it.** Sign in under Settings → Sync to keep this phone in step with Dayweave
+  on your computer. Everything works offline, and changes sync when you're back online. When the same
+  thing changed on two devices, the later change wins.
 - **Updates.** Dayweave checks this repository's releases once a day and installs new versions
   itself, after checking each download's checksum and signature.
 - **Light and dark themes,** following the system or chosen in Settings.
@@ -68,8 +71,9 @@ when Dayweave asks.
 
 ## Privacy
 
-No account, no tracking, no ads and no cloud. Your data never leaves the phone unless you save a backup.
-The only network request Dayweave makes is the daily check of this repository's releases.
+No account needed, no tracking and no ads. Your data stays on the phone unless you turn on sync or save
+a backup. Without sync, the only network request Dayweave makes is the daily check of this
+repository's releases.
 See [PRIVACY.md](PRIVACY.md).
 
 ## Building
